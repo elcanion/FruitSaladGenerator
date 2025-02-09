@@ -14,6 +14,11 @@ namespace FruitSaladGenerator
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
             builder.Services.AddMemoryCache();
+            builder.Services.AddHttpClient("FruityViceAPI", c =>
+            {
+                c.BaseAddress = new Uri("https://www.fruityvice.com/");
+                c.DefaultRequestHeaders.Add("Accept", "application/json");
+            });
 
             var app = builder.Build();
 
