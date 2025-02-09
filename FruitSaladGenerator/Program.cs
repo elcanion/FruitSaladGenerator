@@ -1,4 +1,7 @@
 
+using FruitSaladGenerator.Repositories;
+using FruitSaladGenerator.Services;
+
 namespace FruitSaladGenerator
 {
     public class Program
@@ -8,7 +11,7 @@ namespace FruitSaladGenerator
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-
+            
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
@@ -19,6 +22,8 @@ namespace FruitSaladGenerator
                 c.BaseAddress = new Uri("https://www.fruityvice.com/");
                 c.DefaultRequestHeaders.Add("Accept", "application/json");
             });
+            builder.Services.AddScoped<IFruitSaladService, FruitSaladService>();
+            builder.Services.AddScoped<IFruitRepository, FruitRepository>();
 
             var app = builder.Build();
 

@@ -1,7 +1,14 @@
-﻿namespace FruitSaladGenerator.Services
+﻿using FruitSaladGenerator.Model;
+using FruitSaladGenerator.Repositories;
+
+namespace FruitSaladGenerator.Services
 {
-    public class FruitSaladService
+    public class FruitSaladService : IFruitSaladService
     {
-        public FruitSaladService() { }
+        private readonly IFruitRepository fruitRepository;
+        public FruitSaladService(IFruitRepository fruitRepository) 
+        { 
+            this.fruitRepository = fruitRepository;
+        }
     }
 }
